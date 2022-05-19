@@ -1,0 +1,15 @@
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  background: #212529;
+  color: #0d6efd;
+  border-radius: 100% 100% 0px 0px;
+  box-shadow: 4px -2px 18px black;
+}
+@media (max-width: 992px) {
+  footer{
+  margin-top: 20px;
+  }
+}

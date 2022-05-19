@@ -1,0 +1,32 @@
+.container {
+  background: #212529;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 8px;
+  opacity: 0.93;
+  .title {
+    text-align: center;
+    color: yellow;
+    margin-top: 40px;
+  }
+  .subscription {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+  }
+  .paragraph {
+    margin-top: 15px;
+    text-align: left;
+    color: #fff;
+    font-size: 15px;
+  }
+  .js-example {
+    width: 70%;
+    margin: 0 auto;
+    background: #343a40;
+    color: yellow;
+    padding: 20px;
+  }
+}

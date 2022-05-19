@@ -1,0 +1,137 @@
+<div class="container-fluid container-sm container">
+  <h2 class="title">How to use it</h2>
+  <p class="subscription">An open-source JavaScript library
+    for mobile-friendly interactive maps</p>
+  <p class="paragraph">
+    Leaflet is the leading open-source JavaScript library for mobile-friendly interactive maps. Weighing just about 39
+    KB of JS, it has all the mapping features most developers ever need.
+    Leaflet is designed with simplicity, performance and usability in mind. It works efficiently across all major
+    desktop and mobile platforms, can be extended with lots of plugins, has a beautiful, easy to use and well-documented
+    API and a simple, readable source code that is a joy to contribute to.<br><br>
+    Here we create a map in the 'map' div, add tiles of our choice, and then add a marker with some text in a popup:
+  </p>
+  <pre class="js-example">
+    {{`var map = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();`}}
+  </pre>
+  <h2 class="title">Leaflet on Mobile</h2>
+  <p class="subscription">Preparing the page</p>
+  <p class="paragraph">
+    First we’ll take a look at the HTML & CSS code of the page. To make our map div element stretch to all available
+    space (fullscreen), we can use the following CSS code (note: In this example we use percentage for height. While vh
+    is arguably better, due to a bug with Google Chrome on mobile.):
+  </p>
+  <pre class="js-example">
+{{"    body{\n" +
+  "    padding: 0;\n" +
+  "    margin: 0;\n" +
+  "  }\n" +
+  "    html, body, #map{\n" +
+  "    height: 100%;\n" +
+  "    width: 100vw;\n" +
+  "  };"}}
+  </pre>
+  <h2 class="title">Initializing the map</h2>
+  <p class="subscription">We’ll now initialize the map in the JavaScript code like we did in the quick start guide,
+    showing the whole world:</p>
+  <pre class="js-example">
+ {{'var map = L.map(\'map\').fitWorld();\n'+
+'\n'+
+'L.tileLayer(\'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}\', {\n'+
+'    attribution: \'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a
+    href="https://www.mapbox.com/">Mapbox</a>\',\n'+
+'    maxZoom: 18,\n'+
+'    tileSize: 512,\n'+
+'    zoomOffset: -1\n'+
+'}).addTo(map);'}}
+  </pre>
+  <h2 class="title">Geolocation</h2>
+  <p class="paragraph">
+    Here we specify 16 as the maximum zoom when setting the map view automatically. As soon as the user agrees to share
+    its location and it’s detected by the browser, the map will set the view to it. Now we have a working fullscreen
+    mobile map! But what if we need to do something after the geolocation completed? Here’s what the locationfound and
+    locationerror events are for. Let’s for example add a marker in the detected location, showing accuracy in a popup,
+    by adding an event listener to locationfound event before the locateAndSetView call:
+  </p>
+  <pre class="js-example">
+  {{"function onLocationFound(e) {\n" +
+  "    var radius = e.accuracy;\n" +
+  "\n" +
+  "    L.marker(e.latlng).addTo(map)\n" +
+  "        .bindPopup(\"You are within \" + radius + \" meters from this point\").openPopup();\n" +
+  "\n" +
+  "    L.circle(e.latlng, radius).addTo(map);\n" +
+  "}\n" +
+  "\n" +
+  "map.on('locationfound', onLocationFound);"}}
+  </pre>
+  <p class="paragraph">
+    Excellent! But it would also be nice to show an error message if the geolocation failed:
+  </p>
+  <pre class="js-example">
+    function onLocationError(e)
+    alert(e.message);
+}
+map.on('locationerror', onLocationError);
+  </pre>
+  <p class="paragraph">
+    If you have setView option set to true and the geolocation failed, it will set the view to the whole world.
+    Now the example is complete — try it on your mobile phone: View the full example →
+    Next steps would be to take a look at the detailed documentation and browse other examples.
+  </p>
+  <h2 class="title">
+    Markers With Custom Icons
+  </h2>
+  <p class="subscription">In this tutorial, you’ll learn how to easily define your own icons for use by the markers you
+    put on the map.</p>
+  <p class="paragraph">
+    To make a custom icon, we usually need two images — the actual icon image and the image of its shadow. For this
+    tutorial, we took the Leaflet logo and created four images out of it — 3 leaf images of different colors and one
+    shadow image for the three:
+  </p>
+  <p class="paragraph">
+    Note that the white area in the images is actually transparent.
+  </p>
+  <h2 class="title">
+    Creating an icon
+  </h2>
+  <p class="paragraph">Marker icons in Leaflet are defined by L.Icon objects, which are passed as an option when
+    creating markers. Let’s create a green leaf icon:</p>
+  <pre class="js-example">
+  {{"  var greenIcon = L.icon({\n" +
+  "    iconUrl: 'leaf-green.png',\n" +
+  "    shadowUrl: 'leaf-shadow.png',\n" +
+  "\n" +
+  "    iconSize:     [38, 95], // size of the icon\n" +
+  "    shadowSize:   [50, 64], // size of the shadow\n" +
+  "    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location\n" +
+  "    shadowAnchor: [4, 62],  // the same for the shadow\n" +
+  "    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor\n" +
+  "});"}}
+  </pre>
+  <h2 class="title">Defining an icon class</h2>
+  <p class="subscription">What if we need to create several icons that have lots in common? Let’s define our own icon
+    class containing the shared options, inheriting from L.Icon! It’s really easy in Leaflet:</p>
+  <pre class="js-example">
+   {{" var LeafIcon = L.Icon.extend({\n" +
+  "    options:\n" +
+  "        shadowUrl: 'leaf-shadow.png',\n" +
+  "        iconSize:     [38, 95],\n" +
+  "        shadowSize:   [50, 64],\n" +
+  "        iconAnchor:   [22, 94],\n" +
+  "        shadowAnchor: [4, 62],\n" +
+  "        popupAnchor:  [-3, -76]\n" +
+  "    }\n" +
+  "});"}}
+  </pre>
+  <p class="paragraph">Now we can create all three of our leaf icons from this class and use them:</p>
+  <pre class="js-example">{{"var greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'}),\n" +
+  "    redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}),\n" +
+  "    orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});"}}</pre>
+  <p class="paragraph">That’s it. Now take a look at the full example, the L.Icon docs, or browse other examples.</p>
+</div>

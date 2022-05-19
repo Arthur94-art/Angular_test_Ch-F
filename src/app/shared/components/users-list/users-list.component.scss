@@ -1,0 +1,44 @@
+.container::-webkit-scrollbar { /* chrome based */
+  width: 0px; /* ширина scrollbar'a */
+  background: transparent; /* опционально */
+}
+.container {
+  width: 500px;
+  height: 500px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  .card {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      background: #343a40;
+      color: #fff;
+      .options {
+        display: flex;
+        justify-content: space-between;
+        width: 25%;
+        .delete, .map, .edit {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.btn-block {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4px;
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 400px;
+
+    .card {
+      width: 100%;
+    }
+  }
+}
