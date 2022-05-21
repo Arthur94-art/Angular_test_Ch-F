@@ -1,10 +1,38 @@
 <div class="wrapper">
   <div class="login">
+    <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+      {{error}}
+    </div>
     <h2 class="title">Admin</h2>
-    <form [formGroup]="form">
-      <input type="email" name="email" placeholder="Email" formControlName="email">
-      <input type="password" name="password" placeholder="Password" formControlName="password">
-      <button class="btn" type="button" (click)='submit()'>Login</button>
+    <form>
+      <div [formGroup]="form" [ngClass]="{invalid: form.get('email')?.touched && form.get('email')?.invalid}">
+        <input type="email" name="email" placeholder="Email" id="email" formControlName="email">
+      </div>
+      <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="validation">
+        <small *ngIf="form.get('email')?.errors?.['required']">
+          Email is required...
+        </small>
+        <small *ngIf="form.get('email')?.errors?.['email']">
+          Invalid email...
+        </small>
+      </div>
+      <div [formGroup]="form" [ngClass]="{invalid: form.get('password')?.touched && form.get('password')?.invalid}">
+        <input type="password" name="password" placeholder="Password" id="password" formControlName="password">
+      </div>
+      <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" class="validation" class="validation">
+        <small *ngIf="form.get('password')?.errors?.['required']">
+          Password is required...
+        </small>
+        <small *ngIf="form.get('password')?.errors?.['minlength']">
+          Password should be more then 7 symbols...
+        </small>
+      </div>
+      <button class="btn"
+              type="button"
+              (click)='submit()'
+              [disabled]="form.invalid || submitted"
+      >Login
+      </button>
     </form>
   </div>
 </div>

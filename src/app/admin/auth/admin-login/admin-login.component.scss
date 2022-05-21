@@ -36,7 +36,12 @@ button{
   .title{
     text-align: center;
   }
-  padding: 50px;
+  .validation{
+    margin-left: 10px;
+    color: red;
+  }
+;
+  padding: 85px;
   background: #eee;
   border-radius: 60% / 10%;
 }
