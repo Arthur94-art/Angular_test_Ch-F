@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <div class="login">
+    <h2 class="title">Admin</h2>
+    <form [formGroup]="form">
+      <input type="email" name="email" placeholder="Email" formControlName="email">
+      <input type="password" name="password" placeholder="Password" formControlName="password">
+      <button class="btn" type="button" (click)='submit()'>Login</button>
+    </form>
+  </div>
+</div>
