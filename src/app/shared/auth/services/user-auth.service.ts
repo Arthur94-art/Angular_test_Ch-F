@@ -1,31 +1,28 @@
-import {Injectable} from '@angular/core';
-import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Router} from "@angular/router";
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { Router } from "@angular/router";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class UserAuthService {
 
-  constructor(public userFirebaseAuth: AngularFireAuth, private router: Router) {
-  }
+	constructor(public userFirebaseAuth: AngularFireAuth, private router: Router) {
+	}
 
-  public isUserSigned() {
-    let isSigned = false;
-    return function () {
-      isSigned = !isSigned;
-      return isSigned;
-    }
-  };
+	createUser(signUpForm: {email: string, password: string}) {
+		const { email, password } = signUpForm;
+		this.userFirebaseAuth.createUserWithEmailAndPassword(email, password)
+			.then((user) => {
+				this.router.navigate(['/user', 'home'])
+			});
+	}
 
-  createUser(signUpForm: any) {
-    const {email, password} = signUpForm;
-    this.userFirebaseAuth.createUserWithEmailAndPassword(email, password)
-      .then((user) => {
-        this.isUserSigned();
-        console.log(this.isUserSigned);
-        this.router.navigate(['/user', 'home'])
-      });
-  }
-
+	enterWithEmailAndPassword(logInForm: { email: string, password: string }) {
+		const { email, password } = logInForm;
+		this.userFirebaseAuth.signInWithEmailAndPassword(email, password)
+			.then((user) => {
+				this.router.navigate(['/user', 'home'])
+			})
+	}
 }

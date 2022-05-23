@@ -24,7 +24,7 @@ export class AuthAdminService {
 
 	login(user: User): Observable<any> {
 		user.returnSecureToken = true;
-
+		user.isAdmin = true;
 		return this.http.post(
 			`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebase.apiKey}`,
 			user)

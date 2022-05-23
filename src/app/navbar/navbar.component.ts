@@ -1,3 +1,5 @@
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { UserAuthService } from './../shared/auth/services/user-auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthAdminService } from "../admin/auth/services/authAdmin.service";
@@ -8,20 +10,29 @@ import { AuthAdminService } from "../admin/auth/services/authAdmin.service";
 	styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-	constructor(public authAdminService: AuthAdminService, private router: Router) {
+	isUserLogged: boolean = false;
+	constructor(public authAdminService: AuthAdminService, private router: Router,
+		public userFirebaseAuth: AngularFireAuth, public auth: UserAuthService) {
 	}
 
 	ngOnInit(): void {
+		this.userFirebaseAuth.user.subscribe((response) => {
+			this.isUserLogged = !!response;
+		})
 	}
 
 	getPath(path: string) {
-		return this.authAdminService ? ['/admin', path] : ['/user', path];
+		return this.authAdminService.isAuth() ? ['/admin', path] : ['/user', path];
 	}
 
 	logout(e: Event) {
 		e.preventDefault();
-		this.authAdminService.logout();
-		this.router.navigate(['/admin', 'login']);
+		if (this.isUserLogged) {
+			this.userFirebaseAuth.signOut()
+			this.router.navigate(['/user', 'login']);
+		} else {
+			this.authAdminService.logout();
+			this.router.navigate(['/admin', 'login']);
+		}
 	}
 }
