@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../admin/services/auth.service";
 import {Router} from "@angular/router";
+import {AuthAdminService} from "../admin/auth/services/authAdmin.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +9,19 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public auth: AuthService, private router: Router) {
+  constructor(public authAdminService: AuthAdminService, private router: Router) {
   }
 
   ngOnInit(): void {
   }
+
+  getPath(path: string) {
+    return this.authAdminService ? ['/admin', path] : ['/user',path]
+  }
+
   logout(e: Event) {
     e.preventDefault();
-    this.auth.logout();
-    this.router.navigate(['/admin', 'admin-login'])
+    this.authAdminService.logout();
+    this.router.navigate(['/admin', 'login'])
   }
 }

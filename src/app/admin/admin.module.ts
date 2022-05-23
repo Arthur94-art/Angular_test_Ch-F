@@ -7,6 +7,7 @@ import {AddUserComponent} from "../shared/components/add-user/add-user.component
 import {HomeLayoutComponent} from "../shared/components/home-page/home-layout.component";
 import {AdminLoginComponent} from './auth/admin-login/admin-login.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {AuthAdminGuard} from "./auth/services/auth-admin.guard";
 
 @NgModule({
   declarations: [
@@ -17,16 +18,17 @@ import {ReactiveFormsModule} from "@angular/forms";
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
-          {path: 'admin-login', component: AdminLoginComponent},
-          {path: 'home', component: HomeLayoutComponent},
-          {path: 'tutorial', component: LeafleatTutorialComponent},
-          {path: 'add-user', component: AddUserComponent},
-          {path: '', redirectTo: '/admin/admin-login', pathMatch: 'full'}
+          {path: 'login', component: AdminLoginComponent},
+          {path: 'home', component: HomeLayoutComponent, canActivate: [AuthAdminGuard]},
+          {path: 'tutorial', component: LeafleatTutorialComponent, canActivate: [AuthAdminGuard]},
+          {path: 'add-user', component: AddUserComponent, canActivate: [AuthAdminGuard]},
+          {path: '', redirectTo: '/admin/login', pathMatch: 'full'}
         ]
       },
     ]),
     ReactiveFormsModule
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class AdminModule {
 }

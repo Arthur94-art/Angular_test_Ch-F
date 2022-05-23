@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../../shared/interfaces";
-import {AuthService} from "../../services/auth.service";
+import {User} from "../../../interfaces/interfaces";
+import {AuthAdminService} from "../services/authAdmin.service";
 
 @Component({
   selector: 'app-admin-login',
@@ -13,7 +13,7 @@ export class AdminLoginComponent implements OnInit {
   form!: FormGroup;
   submitted: boolean = false;
 
-  constructor(public auth: AuthService,
+  constructor(public auth: AuthAdminService,
               private router: Router) {
   }
 

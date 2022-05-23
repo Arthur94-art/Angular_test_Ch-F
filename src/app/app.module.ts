@@ -12,17 +12,15 @@ import {MapPageComponent} from './shared/components/map-page/map-page.component'
 import {UsersListComponent} from './shared/components/users-list/users-list.component';
 import {AddUserComponent} from './shared/components/add-user/add-user.component';
 import {LeafleatTutorialComponent} from './shared/components/leafleat-tutorial/leafleat-tutorial.component';
-import {LoginComponent} from './auth/login-component/login.component';
+import {LoginComponent} from './shared/auth/login-component/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorPageComponent} from './error-page/error-page.component';
-import {MainLayoutComponent} from "./shared/components/main-layout/main-layout.component";
 import {AdminLayoutComponent} from "./admin/components/admin-layout/admin-layout.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MainLayoutComponent,
     HomeLayoutComponent,
     FooterComponent,
     MapPageComponent,
