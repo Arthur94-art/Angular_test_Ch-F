@@ -1,5 +1,5 @@
 export interface Env {
-  apiKey: string,
+  firebase: any,
   production: boolean,
   mapbox: {
     accessToken: string,

@@ -16,12 +16,12 @@ export class NavbarComponent implements OnInit {
   }
 
   getPath(path: string) {
-    return this.authAdminService ? ['/admin', path] : ['/user',path]
+    return this.authAdminService ? ['/admin', path] : ['/user',path];
   }
 
   logout(e: Event) {
     e.preventDefault();
     this.authAdminService.logout();
-    this.router.navigate(['/admin', 'login'])
+    this.router.navigate(['/admin', 'login']);
   }
 }

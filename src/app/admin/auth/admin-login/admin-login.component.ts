@@ -28,7 +28,7 @@ export class AdminLoginComponent implements OnInit {
 
   submit() {
     if (this.form.invalid) {
-      return
+      return;
     }
     this.submitted = true;
     const user: User = {
@@ -40,7 +40,7 @@ export class AdminLoginComponent implements OnInit {
       this.router.navigate(['admin', 'home'])
       this.submitted = false;
     }, () => {
-      this.submitted = false
+      this.submitted = false;
     })
   }
 }

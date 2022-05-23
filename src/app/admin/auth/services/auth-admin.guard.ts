@@ -32,7 +32,7 @@ export class AuthAdminGuard implements CanActivate, CanDeactivate<unknown> {
           }
         })
     }
-    return false
+    return false;
   }
 
   canDeactivate(

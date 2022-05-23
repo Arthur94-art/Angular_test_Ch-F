@@ -26,7 +26,7 @@ export class AuthAdminService {
     user.returnSecureToken = true;
 
     return this.http.post(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebase.apiKey}`,
       user)
       .pipe(
         tap(this.setToken),
@@ -34,7 +34,7 @@ export class AuthAdminService {
       )
   }
   private handleError(error: HttpErrorResponse){
-    const {message} = error.error.error
+    const {message} = error.error.error;
     switch (message){
       case 'INVALID_EMAIL':
         this.error$.next('Wrong email...')
@@ -46,7 +46,7 @@ export class AuthAdminService {
         this.error$.next('Email not found...')
         break
     }
-    return throwError(error)
+    return throwError(error);
   }
 
   logout() {
@@ -54,14 +54,14 @@ export class AuthAdminService {
   }
 
   isAuth(): boolean {
-    return !!this.token
+    return !!this.token;
   }
 
   setToken(response: any) {
     if(response){
       const expDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
       localStorage.setItem('fb-token', response.idToken);
-      localStorage.setItem('fb-token-exp', expDate.toString())
+      localStorage.setItem('fb-token-exp', expDate.toString());
     }else{
       localStorage.clear();
     }

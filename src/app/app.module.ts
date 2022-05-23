@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from "@angular/common/http";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClientModule} from "@angular/common/http";
 
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
@@ -16,6 +16,8 @@ import {LoginComponent} from './shared/auth/login-component/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {AdminLayoutComponent} from "./admin/components/admin-layout/admin-layout.component";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import {AdminLayoutComponent} from "./admin/components/admin-layout/admin-layout
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
