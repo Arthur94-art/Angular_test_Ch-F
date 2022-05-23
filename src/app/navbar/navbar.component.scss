@@ -1,33 +1,33 @@
 .navbar {
-  .nav-container {
-    background: currentColor;
-    border-radius: 8px;
-    z-index: 1;
-    padding: 20px;
-  }
-  background: #000;
-  height: 60px;
-  &-brand {
-    color: fuchsia;
-    font-size: 25px;
-    cursor: pointer;
-  }
-  &-toggler {
-    border: 1px solid #fff;
-    border-radius: 4px;
-  }
-  .btn {
-    background: fuchsia;
-    vertical-align: center;
-  }
-  .nav-link {
-    cursor: pointer;
-  }
-.btn-block{
-  display: flex;
-}
-  .logout{
-    margin-left: 10px;
-    cursor: pointer;
-  }
+	.nav-container {
+		background: currentColor;
+		border-radius: 8px;
+		z-index: 1;
+		padding: 20px;
+	}
+	background: #000;
+	height: 60px;
+	&-brand {
+		color: fuchsia;
+		font-size: 25px;
+		cursor: pointer;
+	}
+	&-toggler {
+		border: 1px solid #fff;
+		border-radius: 4px;
+	}
+	.btn {
+		background: fuchsia;
+		vertical-align: center;
+	}
+	.nav-link {
+		cursor: pointer;
+	}
+	.btn-block {
+		display: flex;
+	}
+	.logout {
+		margin-left: 10px;
+		cursor: pointer;
+	}
 }
