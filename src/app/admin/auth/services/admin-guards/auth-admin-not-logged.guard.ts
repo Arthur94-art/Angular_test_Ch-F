@@ -8,12 +8,12 @@ import {
 	UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthAdminService } from "./authAdmin.service";
+import { AuthAdminService } from "../authAdmin.service";
 
 @Injectable({
 	providedIn: 'root'
 })
-export class AuthAdminGuard implements CanActivate, CanDeactivate<unknown> {
+export class AuthAdminNotLoggedGuard implements CanActivate, CanDeactivate<unknown> {
 	constructor(private authAdminService: AuthAdminService,
 		private router: Router) {
 	}

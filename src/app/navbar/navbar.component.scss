@@ -31,4 +31,7 @@
 		cursor: pointer;
 		color: #0d6efd;
 	}
+  .dropdown-toggle{
+    pointer-events: none;
+  }
 }
