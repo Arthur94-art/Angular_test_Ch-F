@@ -20,7 +20,6 @@ import {UserAuthLoggedGuard} from "./auth/services/users-guards/user-auth-logged
           {path: 'home', component: HomeLayoutComponent, canActivate: [UsersAuthNotLoggedGuard]},
           {path: 'tutorial', component: LeafleatTutorialComponent, canActivate: [UsersAuthNotLoggedGuard]},
           {path: 'add-user', component: AddUserComponent, canActivate: [UsersAuthNotLoggedGuard]},
-          {path: '', redirectTo: '/user/login', pathMatch: 'full'}
         ]
       }]
     )

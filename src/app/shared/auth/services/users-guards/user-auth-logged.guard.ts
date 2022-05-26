@@ -31,7 +31,6 @@ export class UserAuthLoggedGuard implements CanActivate, CanDeactivate<unknown> 
         }
       })
     );
-    ;
   }
 
   canDeactivate(

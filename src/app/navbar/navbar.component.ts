@@ -1,3 +1,4 @@
+import { SharedService } from './../shared.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserAuthService } from './../shared/auth/services/user-auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,8 @@ import { AuthAdminService } from "../admin/auth/services/authAdmin.service";
 export class NavbarComponent implements OnInit {
 	isUserLogged: boolean = false;
 	constructor(public authAdminService: AuthAdminService, private router: Router,
-		public userFirebaseAuth: AngularFireAuth, public auth: UserAuthService) {
+		public userFirebaseAuth: AngularFireAuth, public auth: UserAuthService,
+		private sharedService: SharedService) {
 	}
 
 	ngOnInit(): void {
@@ -27,12 +29,16 @@ export class NavbarComponent implements OnInit {
 
 	logout(e: Event) {
 		e.preventDefault();
+		this.sharedService.isShowLoader = true;
 		if (this.isUserLogged) {
-			this.userFirebaseAuth.signOut()
-			this.router.navigate(['/user', 'login']);
+			this.userFirebaseAuth.signOut().then(() => {
+				this.router.navigate(['/user', 'login'])
+				this.sharedService.isShowLoader = false;
+			});
 		} else {
 			this.authAdminService.logout();
 			this.router.navigate(['/admin', 'login']);
+			this.sharedService.isShowLoader = false;
 		}
 	}
 }

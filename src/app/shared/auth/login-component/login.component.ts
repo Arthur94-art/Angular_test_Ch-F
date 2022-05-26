@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	singUp() {
-		this.userAuth.createUser(this.registerForm.value);
+		this.userAuth.createUser(this.registerForm.value)
 	}
 	logIn(){
 		this.userAuth.enterWithEmailAndPassword(this.loginForm.value);

@@ -1,3 +1,4 @@
+import { SharedService } from './../../../shared.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
@@ -14,7 +15,8 @@ export class AdminLoginComponent implements OnInit {
 	submitted: boolean = false;
 
 	constructor(public auth: AuthAdminService,
-		private router: Router) {
+		private router: Router,
+		private sharedService: SharedService) {
 	}
 
 	ngOnInit(): void {
@@ -31,6 +33,7 @@ export class AdminLoginComponent implements OnInit {
 			return;
 		}
 		this.submitted = true;
+		this.sharedService.isShowLoader = true;
 		const user: User = {
 			email: this.form.value.email,
 			password: this.form.value.password
@@ -38,7 +41,7 @@ export class AdminLoginComponent implements OnInit {
 		this.auth.login(user).subscribe(() => {
 			this.form.reset();
 			this.router.navigate(['admin', 'home'])
-			this.submitted = false;
+			this.sharedService.isShowLoader = false;
 		}, () => {
 			this.submitted = false;
 		})

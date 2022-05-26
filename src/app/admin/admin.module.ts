@@ -24,7 +24,7 @@ import {AuthAdminService} from "./auth/services/authAdmin.service";
           {path: 'home', component: HomeLayoutComponent, canActivate: [AuthAdminNotLoggedGuard]},
           {path: 'tutorial', component: LeafleatTutorialComponent, canActivate: [AuthAdminNotLoggedGuard]},
           {path: 'add-user', component: AddUserComponent, canActivate: [AuthAdminNotLoggedGuard]},
-          {path: '', redirectTo: '/admin/login', pathMatch: 'full'}
+          {path: '', redirectTo: 'admin/home', pathMatch: 'full'}
         ]
       },
     ]),

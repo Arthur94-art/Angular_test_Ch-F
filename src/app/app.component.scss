@@ -5,6 +5,9 @@
 	flex-direction: column;
 	justify-content: space-between;
 }
+.filter{
+	filter: blur(5px);
+}
 @media (max-width: 768px) {
 	.app-container {
 		width: 90%;
