@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
 	isShowLoader: boolean = false;
+	isUserLogged: boolean = false;
 	constructor() { }
 }

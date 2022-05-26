@@ -44,6 +44,7 @@ export class AdminLoginComponent implements OnInit {
 			this.sharedService.isShowLoader = false;
 		}, () => {
 			this.submitted = false;
+			this.sharedService.isShowLoader = false;
 		})
 	}
 }

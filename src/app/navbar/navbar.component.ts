@@ -11,15 +11,14 @@ import { AuthAdminService } from "../admin/auth/services/authAdmin.service";
 	styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-	isUserLogged: boolean = false;
 	constructor(public authAdminService: AuthAdminService, private router: Router,
 		public userFirebaseAuth: AngularFireAuth, public auth: UserAuthService,
-		private sharedService: SharedService) {
+		public sharedService: SharedService) {
 	}
 
 	ngOnInit(): void {
 		this.userFirebaseAuth.user.subscribe((response) => {
-			this.isUserLogged = !!response;
+			this.sharedService.isUserLogged = !!response;
 		})
 	}
 
@@ -30,7 +29,7 @@ export class NavbarComponent implements OnInit {
 	logout(e: Event) {
 		e.preventDefault();
 		this.sharedService.isShowLoader = true;
-		if (this.isUserLogged) {
+		if (this.sharedService.isUserLogged) {
 			this.userFirebaseAuth.signOut().then(() => {
 				this.router.navigate(['/user', 'login'])
 				this.sharedService.isShowLoader = false;

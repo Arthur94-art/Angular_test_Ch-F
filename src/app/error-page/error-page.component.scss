@@ -50,6 +50,7 @@
 .cog2 .right-top,
 .cog2 .right-down {
 	background-color: #4f8a8b;
+	border-radius: 8px;
 }
 
 .top {
@@ -103,7 +104,7 @@
 }
 
 h1 {
-	color: #142833;
+	color: gray;
 }
 
 .first-four {
@@ -128,4 +129,6 @@ h1 {
 	color: #fff;
 	background: gray;
 	padding: 20px;
+	border-radius: 8px;
+	opacity: 0.9;
 }

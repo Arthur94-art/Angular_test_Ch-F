@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg" *ngIf="authAdminService.isAuth() || isUserLogged">
+<nav class="navbar navbar-expand-lg" *ngIf="authAdminService.isAuth() || sharedService.isUserLogged">
 	<div  class="container-fluid container-sm nav-container">
 		<a  class="navbar-brand" [routerLink]='getPath("home")'>Ch-F</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -40,7 +40,7 @@
 	</div>
 </nav>
 
-<nav class="navbar navbar-expand-lg" *ngIf="!authAdminService.isAuth() && !isUserLogged">
+<nav class="navbar navbar-expand-lg" *ngIf="!authAdminService.isAuth() && !sharedService.isUserLogged">
 	<div class="container-fluid container-sm nav-container" >
 		<a class="navbar-brand" routerLink="login">Ch-F</a>
 		<div class="btn-block">
