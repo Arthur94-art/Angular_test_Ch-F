@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { User } from "../../../interfaces/interfaces";
-import { AuthAdminService } from "../services/authAdmin.service";
+import { AuthAdminService } from "../services/auth-admin.service";
 
 @Component({
 	selector: 'app-admin-login',
@@ -14,7 +14,7 @@ export class AdminLoginComponent implements OnInit {
 	form!: FormGroup;
 	submitted: boolean = false;
 
-	constructor(public auth: AuthAdminService,
+	constructor(public authAdminService: AuthAdminService,
 		private router: Router,
 		private sharedService: SharedService) {
 	}
@@ -38,7 +38,7 @@ export class AdminLoginComponent implements OnInit {
 			email: this.form.value.email,
 			password: this.form.value.password
 		}
-		this.auth.login(user).subscribe(() => {
+		this.authAdminService.login(user).subscribe(() => {
 			this.form.reset();
 			this.router.navigate(['admin', 'home'])
 			this.sharedService.isShowLoader = false;

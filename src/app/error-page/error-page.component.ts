@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthAdminService } from '../admin/auth/services/authAdmin.service';
+import { AuthAdminService } from '../admin/auth/services/auth-admin.service';
 
 @Component({
 	selector: 'app-error-page',
@@ -11,7 +11,7 @@ import { AuthAdminService } from '../admin/auth/services/authAdmin.service';
 export class ErrorPageComponent implements OnInit {
 
 	constructor(public sharedService: SharedService,
-		public authAdminService: AuthAdminService,
+		private authAdminService: AuthAdminService,
 		private router: Router) { }
 
 	ngOnInit(): void {

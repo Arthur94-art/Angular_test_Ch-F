@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { UserAuthService } from "../services/user-auth.service";
+import { AuthUserService } from "../services/auth-user.service";
 
 @Component({
 	selector: 'app-login-component',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 	registerForm!: FormGroup;
 	loginForm!: FormGroup;
 
-	constructor(private userAuth: UserAuthService, private router: Router) {
+	constructor(private authUserService: AuthUserService) {
 	}
 
 	ngOnInit(): void {
@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
 	}
 
 	singUp() {
-		this.userAuth.createUser(this.registerForm.value)
+		this.authUserService.createUser(this.registerForm.value)
 	}
 	logIn(){
-		this.userAuth.enterWithEmailAndPassword(this.loginForm.value);
+		this.authUserService.enterWithEmailAndPassword(this.loginForm.value);
 
 	}
 }

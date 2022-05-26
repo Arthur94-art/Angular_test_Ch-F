@@ -6,7 +6,7 @@ import {HomeLayoutComponent} from "./components/home-page/home-layout.component"
 import {LeafleatTutorialComponent} from "./components/leafleat-tutorial/leafleat-tutorial.component";
 import {AddUserComponent} from "./components/add-user/add-user.component";
 import {LoginComponent} from "./auth/login-component/login.component";
-import {UserAuthService} from "./auth/services/user-auth.service";
+import {AuthUserService} from "./auth/services/auth-user.service";
 import {UsersAuthNotLoggedGuard} from "./auth/services/users-guards/users-auth-not-logged.guard";
 import {UserAuthLoggedGuard} from "./auth/services/users-guards/user-auth-logged.guard";
 
@@ -27,7 +27,7 @@ import {UserAuthLoggedGuard} from "./auth/services/users-guards/user-auth-logged
     )
   ],
   exports: [RouterModule],
-  providers: [UserAuthService]
+  providers: [AuthUserService]
 })
 export class UsersModule {
 }

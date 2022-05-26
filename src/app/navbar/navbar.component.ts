@@ -1,9 +1,9 @@
 import { SharedService } from './../shared.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { UserAuthService } from './../shared/auth/services/user-auth.service';
+import { AuthUserService } from '../shared/auth/services/auth-user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { AuthAdminService } from "../admin/auth/services/authAdmin.service";
+import { AuthAdminService } from "../admin/auth/services/auth-admin.service";
 
 @Component({
 	selector: 'app-navbar',
@@ -12,17 +12,17 @@ import { AuthAdminService } from "../admin/auth/services/authAdmin.service";
 })
 export class NavbarComponent implements OnInit {
 	constructor(public authAdminService: AuthAdminService, private router: Router,
-		public userFirebaseAuth: AngularFireAuth, public auth: UserAuthService,
+		private angularFireAuth: AngularFireAuth, public authUserService: AuthUserService,
 		public sharedService: SharedService) {
 	}
 
 	ngOnInit(): void {
-		this.userFirebaseAuth.user.subscribe((response) => {
+		this.angularFireAuth.user.subscribe((response) => {
 			this.sharedService.isUserLogged = !!response;
 		})
 	}
 
-	getPath(path: string) {
+	getPathForCurrentModule(path: string) {
 		return this.authAdminService.isAuth() ? ['/admin', path] : ['/user', path];
 	}
 
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
 		e.preventDefault();
 		this.sharedService.isShowLoader = true;
 		if (this.sharedService.isUserLogged) {
-			this.userFirebaseAuth.signOut().then(() => {
+			this.angularFireAuth.signOut().then(() => {
 				this.router.navigate(['/user', 'login'])
 				this.sharedService.isShowLoader = false;
 			});

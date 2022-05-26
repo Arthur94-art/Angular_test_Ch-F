@@ -1,4 +1,3 @@
-import { ErrorPageComponent } from './../error-page/error-page.component';
 import { AuthAdminLoggedGuard } from './auth/services/admin-guards/auth-admin-loged.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +9,7 @@ import { HomeLayoutComponent } from "../shared/components/home-page/home-layout.
 import { AdminLoginComponent } from './auth/admin-login/admin-login.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AuthAdminNotLoggedGuard } from "./auth/services/admin-guards/auth-admin-not-logged.guard";
-import { AuthAdminService } from "./auth/services/authAdmin.service";
+import { AuthAdminService } from "./auth/services/auth-admin.service";
 
 @NgModule({
 	declarations: [
@@ -25,7 +24,6 @@ import { AuthAdminService } from "./auth/services/authAdmin.service";
 					{ path: 'home', component: HomeLayoutComponent, canActivate: [AuthAdminNotLoggedGuard] },
 					{ path: 'tutorial', component: LeafleatTutorialComponent, canActivate: [AuthAdminNotLoggedGuard] },
 					{ path: 'add-user', component: AddUserComponent, canActivate: [AuthAdminNotLoggedGuard] },
-					{ path: '404', component: ErrorPageComponent },
 					{ path: '', redirectTo: 'admin/home', pathMatch: 'full' },
 					{ path: '**', redirectTo: '/404' }
 				]

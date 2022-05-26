@@ -1,6 +1,6 @@
 <div class="wrapper">
 	<div class="login">
-		<div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+		<div class="alert alert-danger" *ngIf="authAdminService.error$ | async as error">
 			{{error}}
 		</div>
 		<h2 class="title">Admin</h2>
