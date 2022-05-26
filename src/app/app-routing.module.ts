@@ -1,20 +1,16 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeLayoutComponent} from "./shared/components/home-page/home-layout.component";
-import {AddUserComponent} from "./shared/components/add-user/add-user.component";
-import {LeafleatTutorialComponent} from "./shared/components/leafleat-tutorial/leafleat-tutorial.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: '', component: HomeLayoutComponent},
-  {path: 'tutorial', component: LeafleatTutorialComponent},
-  {path: 'add_user', component: AddUserComponent}
-
-];
+	{ path: 'user', loadChildren: () => import('./shared/users.module').then(m => m.UsersModule) },
+	{ path: 'admin', loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule) },
+	{ path: '404', component: ErrorPageComponent },
+]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

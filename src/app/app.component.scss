@@ -1,12 +1,15 @@
-.app-container{
-  margin: 0 auto;
- display: flex;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
+.app-container {
+	margin: 0 auto;
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: space-between;
 }
-@media (max-width:768px) {
-  .app-container{
-   width: 90%;
-  }
+.filter{
+	filter: blur(5px);
+}
+@media (max-width: 768px) {
+	.app-container {
+		width: 90%;
+	}
 }
