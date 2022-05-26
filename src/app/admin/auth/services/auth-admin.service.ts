@@ -7,7 +7,7 @@ import { User } from "../../../interfaces/interfaces";
 
 @Injectable()
 export class AuthAdminService {
-	public error$: Subject<any> = new Subject<string>()
+	public error$: Subject<string> = new Subject<string>()
 	constructor(private http: HttpClient) {
 	}
 

@@ -18,7 +18,7 @@ export class MapPageComponent implements AfterViewInit {
 		this.loadMap();
 	}
 
-	private getCurrentPosition(): any {
+	private getCurrentPosition(): Observable<any> {
 		return new Observable((observer: Subscriber<any>) => {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition((position: any) => {

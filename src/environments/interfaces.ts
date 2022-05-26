@@ -1,7 +1,9 @@
+import { Firebase } from "src/app/interfaces/interfaces";
+
 export interface Env {
-  firebase: any,
-  production: boolean,
-  mapbox: {
-    accessToken: string,
-  },
+	firebase: Firebase,
+	production: boolean,
+	mapbox: {
+		accessToken: string,
+	},
 }
