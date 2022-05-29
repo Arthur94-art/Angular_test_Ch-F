@@ -12,11 +12,10 @@ import { AuthAdminService } from "../services/auth-admin.service";
 })
 export class AdminLoginComponent implements OnInit {
 	form!: FormGroup;
-	submitted: boolean = false;
 
 	constructor(public authAdminService: AuthAdminService,
 		private router: Router,
-		private sharedService: SharedService) {
+		public sharedService: SharedService) {
 	}
 
 	ngOnInit(): void {
@@ -32,7 +31,7 @@ export class AdminLoginComponent implements OnInit {
 		if (this.form.invalid) {
 			return;
 		}
-		this.submitted = true;
+		this.sharedService.submitted = true;
 		this.sharedService.isShowLoader = true;
 		const user: User = {
 			email: this.form.value.email,
@@ -43,7 +42,7 @@ export class AdminLoginComponent implements OnInit {
 			this.router.navigate(['admin', 'home'])
 			this.sharedService.isShowLoader = false;
 		}, () => {
-			this.submitted = false;
+			this.sharedService.submitted = false;
 			this.sharedService.isShowLoader = false;
 		})
 	}

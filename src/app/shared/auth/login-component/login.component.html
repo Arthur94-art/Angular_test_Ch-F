@@ -2,19 +2,63 @@
 	<div class="main">
 		<input type="checkbox" id="chk" aria-hidden="true">
 		<div class="signup">
-			<form [formGroup]="registerForm">
+			<form [formGroup]="registerForm"
+				[ngClass]="{invalid: registerForm.get('email')?.touched && registerForm.get('email')?.invalid}">
 				<label for="chk" aria-hidden="true">Sign up</label>
-				<input type="email" name="email" placeholder="Email" formControlName="email">
-				<input type="password" name="pswd" placeholder="Password" formControlName="password">
-				<button type="submit" (click)="singUp()">Sign up</button>
+				<div class="alert alert-danger" *ngIf="authUserService.errorInfo">
+					{{authUserService.errorInfo}}
+				</div>
+				<input type="email" name="email" id="email" placeholder="Email" formControlName="email">
+				<div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="validation">
+					<small *ngIf="registerForm.get('email')?.errors?.['required']">
+						Email is required...
+					</small>
+					<small *ngIf="registerForm.get('email')?.errors?.['email']">
+						Invalid email...
+					</small>
+				</div>
+				<input type="password" name="pswd" id="password" placeholder="Password" formControlName="password">
+				<div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+					class="validation" class="validation">
+					<small *ngIf="registerForm.get('password')?.errors?.['required']">
+						Password is required...
+					</small>
+					<small *ngIf="registerForm.get('password')?.errors?.['minlength']">
+						Password should be more then 7 symbols...
+					</small>
+				</div>
+				<button class="btn" type="submit" (click)="singUp()"
+					[disabled]="registerForm.invalid || sharedService.submitted">Sign
+					up</button>
 			</form>
 		</div>
 		<div class="login">
 			<form [formGroup]="loginForm">
 				<label for="chk" aria-hidden="true">Login</label>
+				<div class="alert alert-danger" *ngIf="authUserService.errorInfo">
+					{{authUserService.errorInfo}}
+				</div>
 				<input type="email" name="email" placeholder="Email" formControlName="email">
+				<div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="validation">
+					<small *ngIf="loginForm.get('email')?.errors?.['required']">
+						Email is required...
+					</small>
+					<small *ngIf="loginForm.get('email')?.errors?.['email']">
+						Invalid email...
+					</small>
+				</div>
 				<input type="password" name="password" placeholder="Password" formControlName="password">
-				<button class="btn" type="submit" (click)="logIn()">Login</button>
+				<div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="validation"
+					class="validation">
+					<small *ngIf="loginForm.get('password')?.errors?.['required']">
+						Password is required...
+					</small>
+					<small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+						Password should be more then 7 symbols...
+					</small>
+				</div>
+				<button class="btn" type="submit" (click)="logIn()"
+					[disabled]="loginForm.invalid || sharedService.submitted">Login</button>
 			</form>
 		</div>
 	</div>

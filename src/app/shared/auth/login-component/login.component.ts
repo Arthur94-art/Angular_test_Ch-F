@@ -1,3 +1,4 @@
+import { SharedService } from './../../../shared.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
 	registerForm!: FormGroup;
 	loginForm!: FormGroup;
 
-	constructor(private authUserService: AuthUserService, private router: Router) {
+	constructor(public authUserService: AuthUserService,
+		public sharedService: SharedService) {
 	}
 
 	ngOnInit(): void {
@@ -28,9 +30,9 @@ export class LoginComponent implements OnInit {
 	}
 
 	singUp() {
-		this.authUserService.createUser(this.registerForm.value)
+		this.authUserService.createUser(this.registerForm.value);
 	}
-	logIn(){
+	logIn() {
 		this.authUserService.enterWithEmailAndPassword(this.loginForm.value);
 
 	}
