@@ -19,7 +19,7 @@ export class AuthUserService {
 		this.sharedService.submitted = true;
 		promise.then(() => {
 			this.sharedService.isShowLoader = false;
-			this.router.navigate(pathToNavigate)
+			this.router.navigate(pathToNavigate);
 			this.errorInfo = '';
 			this.sharedService.submitted = false;
 		}).catch((e) => {
