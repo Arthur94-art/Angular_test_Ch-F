@@ -9,6 +9,7 @@ import {LoginComponent} from "./auth/login-component/login.component";
 import {AuthUserService} from "./auth/services/auth-user.service";
 import {UsersAuthNotLoggedGuard} from "./auth/services/users-guards/users-auth-not-logged.guard";
 import {UserAuthLoggedGuard} from "./auth/services/users-guards/user-auth-logged.guard";
+import {ErrorPageComponent} from "../error-page/error-page.component";
 
 @NgModule({
   declarations: [MainLayoutComponent],
@@ -20,8 +21,9 @@ import {UserAuthLoggedGuard} from "./auth/services/users-guards/user-auth-logged
           {path: 'home', component: HomeLayoutComponent, canActivate: [UsersAuthNotLoggedGuard]},
           {path: 'tutorial', component: LeafleatTutorialComponent, canActivate: [UsersAuthNotLoggedGuard]},
           {path: 'add-user', component: AddUserComponent, canActivate: [UsersAuthNotLoggedGuard]},
-			 { path: '', redirectTo: '/user/home', pathMatch: 'full' },
-			 { path: '**', redirectTo: '/404' }
+          {path: '', redirectTo: '/user/home', pathMatch: 'full'},
+          {path: '404', component: ErrorPageComponent},
+          {path: '**', redirectTo: '/404'}
         ]
       }]
     )
