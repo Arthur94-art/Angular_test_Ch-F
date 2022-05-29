@@ -12,38 +12,30 @@ export class AuthUserService {
 		private sharedService: SharedService) {
 	}
 
-	createUser(signUpForm: { email: string, password: string }) {
+	getTypeOfRequest(
+		promise: Promise<any>,
+		pathToNavigate: string[] = ['/user', 'home']) {
 		this.sharedService.isShowLoader = true;
-		const { email, password } = signUpForm;
 		this.sharedService.submitted = true;
-		this.angularFireAuth.createUserWithEmailAndPassword(email, password)
-			.then(() => {
-				this.sharedService.isShowLoader = false;
-				this.router.navigate(['/user', 'home'])
-				this.errorInfo = '';
-				this.sharedService.submitted = false;
-			}).catch((e) => {
-				this.sharedService.isShowLoader = false;
-				this.sharedService.submitted = false;
-				this.errorInfo = this.convertErrorMessage(e.code);
-			})
+		promise.then(() => {
+			this.sharedService.isShowLoader = false;
+			this.router.navigate(pathToNavigate)
+			this.errorInfo = '';
+			this.sharedService.submitted = false;
+		}).catch((e) => {
+			this.sharedService.isShowLoader = false;
+			this.sharedService.submitted = false;
+			this.errorInfo = this.convertErrorMessage(e.code);
+		})
 	}
 
+	createUser(signUpForm: { email: string, password: string }) {
+		const { email, password } = signUpForm;
+		this.getTypeOfRequest(this.angularFireAuth.createUserWithEmailAndPassword(email, password))
+	}
 	enterWithEmailAndPassword(logInForm: { email: string, password: string }) {
-		this.sharedService.isShowLoader = true;
 		const { email, password } = logInForm;
-		this.sharedService.submitted = true;
-		this.angularFireAuth.signInWithEmailAndPassword(email, password)
-			.then(() => {
-				this.router.navigate(['/user', 'home'])
-				this.sharedService.isShowLoader = false;
-				this.errorInfo = '';
-				this.sharedService.submitted = false;
-			}).catch((e) => {
-				this.sharedService.isShowLoader = false;
-				this.sharedService.submitted = false;
-				this.errorInfo = this.convertErrorMessage(e.code);
-			})
+		this.getTypeOfRequest(this.angularFireAuth.signInWithEmailAndPassword(email, password))
 	}
 	convertErrorMessage(code: string): string {
 		switch (code) {

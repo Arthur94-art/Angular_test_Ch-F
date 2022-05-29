@@ -33,11 +33,13 @@ export class NavbarComponent implements OnInit {
 			this.angularFireAuth.signOut().then(() => {
 				this.router.navigate(['/user', 'login'])
 				this.sharedService.isShowLoader = false;
+				this.sharedService.submitted = false;
 			});
 		} else {
 			this.authAdminService.logout();
 			this.router.navigate(['/admin', 'login']);
 			this.sharedService.isShowLoader = false;
+			this.sharedService.submitted = false;
 		}
 	}
 }
