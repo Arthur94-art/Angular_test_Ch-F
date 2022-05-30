@@ -1,9 +1,28 @@
-<div class="container-fluid container-sm form">
-	<input class="form-control form-control-lg" type="text" placeholder="Your name...">
-	<input class="form-control form-control-lg" type="text" placeholder="Your lastname...">
-	<input class="form-control form-control-lg" type="text" placeholder="Current city...">
-	<input class="form-control form-control-lg" type="text" placeholder="Your phone...">
-	<input class="form-control form-control-lg" type="text" placeholder="Longitude...">
-	<input class="form-control form-control-lg" type="text" placeholder="Latitude...">
-	<button type="button" class="btn-lg btn-save">Save data</button>
+<div class="modal-header">
+	<h4 class="modal-title pull-left">Enter your data.</h4>
+	<button type="button" class="btn-close close pull-right" aria-label="Close" (click)="sharedService.modalRef?.hide()">
+		<span aria-hidden="true" class="visually-hidden">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="container-fluid container-sm form" [formGroup]="createUserForm">
+		<input class="form-control form-control-lg name" type="text" placeholder="Name" formControlName="name">
+		<input class="form-control form-control-lg last-name" type="text" placeholder="Last name"
+			formControlName="lastName">
+
+		<div class="date-picker-phone">
+			<input class="form-control form-control-lg" type="text" placeholder="Phone"
+				formControlName="phoneNumber" inputMask="+00 (000) 000-00-00">
+			<input type="text" class="form-control form-control-lg birthday" #dp="bsDatepicker" bsDatepicker
+				placeholder="Birthday" formControlName="birthday">
+		</div>
+		<select formControlName="country" name="" id="" class="form-control" onfocus='this.size=5;' onblur='this.size=1;'
+			onchange='this.size=1; this.blur();'>
+			<option *ngFor="let country of arrayOfCountry" [value]="country">{{country}}</option>
+		</select>
+
+		<input class="form-control form-control-lg" type="text" placeholder="Longitude" formControlName="longitude">
+		<input class="form-control form-control-lg" type="text" placeholder="Latitude" formControlName="latitude">
+		<button type="button" class="btn-lg btn-save" (click)="sendUsersRequest()">Send</button>
+	</div>
 </div>

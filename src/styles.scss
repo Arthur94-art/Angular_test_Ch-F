@@ -3,3 +3,5 @@ body{
   background-image: url("./assets/images/map.jpg");
   background-repeat: repeat;
 }
+@import "~bootstrap/scss/bootstrap";
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";

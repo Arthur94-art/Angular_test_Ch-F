@@ -21,6 +21,10 @@ import { environment } from "../environments/environment";
 import { AdminModule } from "./admin/admin.module";
 import { UsersModule } from "./shared/users.module";
 import { LoaderComponent } from './loader/loader.component';
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { InputMaskModule } from 'ngx-input-mask';
 
 @NgModule({
 	declarations: [
@@ -46,9 +50,12 @@ import { LoaderComponent } from './loader/loader.component';
 		HttpClientModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AdminModule,
-		UsersModule
+		UsersModule,
+		BsDatepickerModule,
+		BrowserAnimationsModule,
+		InputMaskModule
 	],
-	providers: [],
+	providers: [BsModalService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

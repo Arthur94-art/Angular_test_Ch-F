@@ -1,10 +1,32 @@
 .form {
+	.name-surname {
+		display: flex;
+		justify-content: space-between;
+		.name,
+		.last-name {
+			width: 48%;
+		}
+	}
+	.date-picker-phone {
+		display: flex;
+		.birthday {
+			width: 55%;
+			margin-left: 20px;
+		}
+		.phone {
+			width: 40%;
+
+			option {
+				width: 50%;
+			}
+		}
+	}
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 60%;
-	margin-bottom: 50px;
-	input {
+	width: 90%;
+	input,
+	select {
 		margin-top: 20px;
 	}
 	.btn-save {
