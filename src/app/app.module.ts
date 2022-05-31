@@ -1,8 +1,14 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from "@angular/common/http";
+import { AngularFireModule } from "@angular/fire/compat";
+import { AdminModule } from "./admin/admin.module";
+import { UsersModule } from "./shared/users.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,18 +19,10 @@ import { UsersListComponent } from './shared/components/users-list/users-list.co
 import { AddUserComponent } from './shared/components/add-user/add-user.component';
 import { LeafleatTutorialComponent } from './shared/components/leafleat-tutorial/leafleat-tutorial.component';
 import { LoginComponent } from './shared/auth/login-component/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AdminLayoutComponent } from "./admin/components/admin-layout/admin-layout.component";
-import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "../environments/environment";
-import { AdminModule } from "./admin/admin.module";
-import { UsersModule } from "./shared/users.module";
-import { LoaderComponent } from './loader/loader.component';
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { InputMaskModule } from 'ngx-input-mask';
 
 @NgModule({
 	declarations: [
@@ -45,15 +43,12 @@ import { InputMaskModule } from 'ngx-input-mask';
 		BrowserModule,
 		AppRoutingModule,
 		NgbModule,
-		ReactiveFormsModule,
 		FormsModule,
 		HttpClientModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AdminModule,
 		UsersModule,
-		BsDatepickerModule,
-		BrowserAnimationsModule,
-		InputMaskModule
+		BrowserAnimationsModule
 	],
 	providers: [BsModalService],
 	bootstrap: [AppComponent]
