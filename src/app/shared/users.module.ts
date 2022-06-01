@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainLayoutComponent } from "./components/main-layout/main-layout.component";
 import { RouterModule } from "@angular/router";
-import { HomeLayoutComponent } from "./components/home-page/home-layout.component";
-import { LeafleatTutorialComponent } from "./components/leafleat-tutorial/leafleat-tutorial.component";
-import { LoginComponent } from "./auth/login-component/login.component";
-import { AuthUserService } from "./auth/services/auth-user.service";
-import { UsersAuthNotLoggedGuard } from "./auth/services/users-guards/users-auth-not-logged.guard";
-import { UserAuthLoggedGuard } from "./auth/services/users-guards/user-auth-logged.guard";
+
 import { ErrorPageComponent } from "../error-page/error-page.component";
 import { InputMaskModule } from 'ngx-input-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainLayoutComponent } from '../user/components/main-layout/main-layout.component';
+import { LoginComponent } from '../user/auth/login-component/login.component';
+import { UserAuthLoggedGuard } from '../user/auth/services/users-guards/user-auth-logged.guard';
+import { HomeLayoutComponent } from '../user/components/home-page/home-layout.component';
+import { UsersAuthNotLoggedGuard } from '../user/auth/services/users-guards/users-auth-not-logged.guard';
+import { LeafleatTutorialComponent } from '../user/components/leafleat-tutorial/leafleat-tutorial.component';
+import { AuthUserService } from '../user/auth/services/auth-user.service';
 
 @NgModule({
 	declarations: [MainLayoutComponent],

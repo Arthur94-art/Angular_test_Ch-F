@@ -1,8 +1,7 @@
-import { SharedService } from '../../../shared.service';
-
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { Router } from "@angular/router";
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Injectable()
 export class AuthUserService {
