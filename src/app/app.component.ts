@@ -10,5 +10,5 @@ import { SharedService } from './shared/shared.service';
 export class AppComponent {
 	constructor(public sharedService: SharedService) {
 	}
-	title = 'Ch-F';
+	title = 'Ch-f';
 }
