@@ -12,6 +12,8 @@ import { ErrorPageComponent } from "../error-page/error-page.component";
 import { HomeLayoutComponent } from '../user/components/home-page/home-layout.component';
 import { LeafleatTutorialComponent } from '../user/components/leafleat-tutorial/leafleat-tutorial.component';
 import { AddUserComponent } from '../user/components/add-user/add-user.component';
+import { InputMaskModule } from 'ngx-input-mask';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AddUserComponent } from '../user/components/add-user/add-user.component
   imports: [
     CommonModule,
     HttpClientModule,
+    BsDatepickerModule,
+    InputMaskModule,
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
@@ -37,7 +41,11 @@ import { AddUserComponent } from '../user/components/add-user/add-user.component
     ]),
     ReactiveFormsModule, HttpClientModule
   ],
-  exports: [RouterModule],
+  exports: [RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BsDatepickerModule,
+    InputMaskModule,],
   providers: [AuthAdminService]
 })
 export class AdminModule {

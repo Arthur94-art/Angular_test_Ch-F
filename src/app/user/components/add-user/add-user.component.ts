@@ -1,8 +1,7 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SharedService } from './../../../shared.service';
-import { countryList } from './country-list';
 import { Component, OnInit } from '@angular/core';
-import { v4 as uuidv4 } from 'uuid';
+import { SharedService } from 'src/app/shared/shared.service';
+import { countryList } from './country-list';
 
 @Component({
 	selector: 'app-add-user',

@@ -1,3 +1,5 @@
+import { AddUserComponent } from './user/components/add-user/add-user.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 import { HomeLayoutComponent } from './user/components/home-page/home-layout.component';
 import { MapPageComponent } from './user/components/map-page/map-page.component';
@@ -14,13 +16,14 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "../environments/environment";
 import { AdminModule } from "./admin/admin.module";
-import { UsersModule } from "./user/users.module";
 import { LoaderComponent } from './loader/loader.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsersModule } from './user/users.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { AppEffects } from './app.effects';
     LoaderComponent,
     UsersListComponent,
     HomeLayoutComponent,
-    MapPageComponent
+    MapPageComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +51,10 @@ import { AppEffects } from './app.effects';
     EffectsModule.forRoot([AppEffects]),
     StoreModule.forRoot(reducers, {
       metaReducers
-    })
+    }),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

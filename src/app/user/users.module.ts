@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainLayoutComponent } from "./components/main-layout/main-layout.component";
 import { RouterModule } from "@angular/router";
 import { HomeLayoutComponent } from "./components/home-page/home-layout.component";
 import { LeafleatTutorialComponent } from "./components/leafleat-tutorial/leafleat-tutorial.component";
@@ -12,6 +11,9 @@ import { UserAuthLoggedGuard } from "./auth/services/users-guards/user-auth-logg
 import { ErrorPageComponent } from "../error-page/error-page.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { InputMaskModule } from 'ngx-input-mask';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [MainLayoutComponent, LoginComponent],
@@ -19,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BsDatepickerModule,
+    InputMaskModule,
     RouterModule.forChild([{
       path: '', component: MainLayoutComponent, children: [
         { path: 'login', component: LoginComponent, canActivate: [UserAuthLoggedGuard] },
