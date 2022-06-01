@@ -1,31 +1,23 @@
-import { HttpClientModule } from '@angular/common/http';
+import { SharedModuleModule } from './../shared/shared-module.module';
 import { AuthAdminLoggedGuard } from './auth/services/admin-guards/auth-admin-loged.guard';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from "./components/admin-layout/admin-layout.component";
 import { AdminLoginComponent } from './auth/admin-login/admin-login.component';
-import { ReactiveFormsModule } from "@angular/forms";
 import { AuthAdminNotLoggedGuard } from "./auth/services/admin-guards/auth-admin-not-logged.guard";
 import { AuthAdminService } from "./auth/services/auth-admin.service";
 import { ErrorPageComponent } from "../error-page/error-page.component";
 import { HomeLayoutComponent } from '../user/components/home-page/home-layout.component';
 import { LeafleatTutorialComponent } from '../user/components/leafleat-tutorial/leafleat-tutorial.component';
 import { AddUserComponent } from '../user/components/add-user/add-user.component';
-import { InputMaskModule } from 'ngx-input-mask';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
     AdminLayoutComponent,
     AdminLoginComponent,
-
   ],
   imports: [
-    CommonModule,
-    HttpClientModule,
-    BsDatepickerModule,
-    InputMaskModule,
+    SharedModuleModule,
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
@@ -39,13 +31,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
         ]
       },
     ]),
-    ReactiveFormsModule, HttpClientModule
   ],
-  exports: [RouterModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BsDatepickerModule,
-    InputMaskModule,],
+  exports: [RouterModule, SharedModuleModule],
   providers: [AuthAdminService]
 })
 export class AdminModule {

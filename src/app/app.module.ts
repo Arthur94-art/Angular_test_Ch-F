@@ -1,6 +1,4 @@
 import { AddUserComponent } from './user/components/add-user/add-user.component';
-import { BsModalService } from 'ngx-bootstrap/modal';
-
 import { HomeLayoutComponent } from './user/components/home-page/home-layout.component';
 import { MapPageComponent } from './user/components/map-page/map-page.component';
 import { UsersListComponent } from './user/components/users-list/users-list.component';
@@ -8,11 +6,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "../environments/environment";
 import { AdminModule } from "./admin/admin.module";
@@ -24,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersModule } from './user/users.module';
+import { SharedModuleModule } from './shared/shared-module.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +37,6 @@ import { UsersModule } from './user/users.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AdminModule,
     UsersModule,
@@ -52,9 +48,10 @@ import { UsersModule } from './user/users.module';
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModuleModule
   ],
-  providers: [BsModalService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
