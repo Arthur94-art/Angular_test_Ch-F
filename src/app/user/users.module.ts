@@ -32,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     }]
     )
   ],
-  exports: [RouterModule, ReactiveFormsModule],
+  exports: [RouterModule, ReactiveFormsModule, HttpClientModule],
   providers: [AuthUserService]
 })
 export class UsersModule {

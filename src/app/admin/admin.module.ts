@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from "./components/admin-layout/admin-layout.component";
-import { LeafleatTutorialComponent } from "../user/components/leafleat-tutorial/leafleat-tutorial.component";
-import { AddUserComponent } from "../user/components/add-user/add-user.component";
-import { HomeLayoutComponent } from "../user/components/home-page/home-layout.component";
 import { AdminLoginComponent } from './auth/admin-login/admin-login.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AuthAdminNotLoggedGuard } from "./auth/services/admin-guards/auth-admin-not-logged.guard";
 import { AuthAdminService } from "./auth/services/auth-admin.service";
 import { ErrorPageComponent } from "../error-page/error-page.component";
+import { HomeLayoutComponent } from '../user/components/home-page/home-layout.component';
+import { LeafleatTutorialComponent } from '../user/components/leafleat-tutorial/leafleat-tutorial.component';
+import { AddUserComponent } from '../user/components/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { ErrorPageComponent } from "../error-page/error-page.component";
         ]
       },
     ]),
-    ReactiveFormsModule
+    ReactiveFormsModule, HttpClientModule
   ],
   exports: [RouterModule],
   providers: [AuthAdminService]
