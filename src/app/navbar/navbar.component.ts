@@ -1,9 +1,10 @@
-import { SharedService } from './../shared.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AuthUserService } from '../shared/auth/services/auth-user.service';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthAdminService } from "../admin/auth/services/auth-admin.service";
+import { AuthUserService } from '../user/auth/services/auth-user.service';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
 	selector: 'app-navbar',

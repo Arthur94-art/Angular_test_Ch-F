@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
-import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthAdminService } from '../admin/auth/services/auth-admin.service';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
 	selector: 'app-error-page',

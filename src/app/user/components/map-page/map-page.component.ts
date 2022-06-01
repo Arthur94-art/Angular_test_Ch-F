@@ -9,7 +9,7 @@ import { Observable, Subscriber } from "rxjs";
 	styleUrls: ['./map-page.component.scss']
 })
 export class MapPageComponent implements AfterViewInit {
-	map: any;
+	 map: any;
 
 	constructor() {
 	}
